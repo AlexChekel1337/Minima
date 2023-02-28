@@ -1,5 +1,7 @@
 # Minima
 
+![Version badge](https://img.shields.io/github/v/release/AlexChekel1337/Minima) ![Build status badge](https://img.shields.io/github/actions/workflow/status/AlexChekel1337/Minima/swift.yml)
+
 Minima is a tiny Dependency Injection library intended for small projects.
 
 ## Motivation
