@@ -33,7 +33,7 @@ extension Dependencies {
 }
 ```
 
-Then simply inject this dependency using `@Dependency` wrapper:
+Then simply inject these dependencies using `@Dependency` wrapper:
 ```swift
 import Minima
 
