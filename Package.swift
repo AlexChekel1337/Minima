@@ -14,6 +14,7 @@ let package = Package(
         .library(name: "Minima", targets: ["Minima"]),
     ],
     targets: [
-        .target(name: "Minima")
+        .target(name: "Minima"),
+        .testTarget(name: "MinimaTests", dependencies: ["Minima"])
     ]
 )

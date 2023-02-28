@@ -1,3 +1,11 @@
+//
+// Minima.swift
+// Minima
+//
+// Created by Alexandr Chekel on 27.02.2023.
+// Copyright © 2023 Alexandr Chekel. All rights reserved.
+//
+
 import Foundation
 
 /// Dependency store. See dependency declaration example in the "Discussion" block.
