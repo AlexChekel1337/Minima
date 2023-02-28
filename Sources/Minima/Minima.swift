@@ -8,27 +8,38 @@
 
 import Foundation
 
-/// Dependency store. See dependency declaration example in the "Discussion" block.
+/// Dependency store. Extend it to provide a list of dependencies available to inject
+/// using `@Dependency` or `@LazyDependency` property wrappers.
 /// ```
 /// extension Dependencies {
 ///     var integerDependency: Int { ... }
 ///     var settingsService: SettingsService { ... }
 /// }
-/// ```
-/// To inject a dependency use `Dependency` property wrapper:
-/// ```
-/// @Dependency(\.integerDependency) private var integerDependency
-/// @Dependency(\.settingsService) private var settingsService
-/// ```
 public struct Dependencies {
     public static let common = Self()
 }
 
+/// Property wrapper that performs injection of specified dependency upon initialization
+/// of parent object.
 @propertyWrapper
 public struct Dependency<D> {
     public private(set) var wrappedValue: D
 
     public init(_ keyPath: KeyPath<Dependencies, D>) {
         wrappedValue = Dependencies.common[keyPath: keyPath]
+    }
+}
+
+/// Property wrapper that performs injection of specified dependency upon first access.
+@propertyWrapper
+public struct LazyDependency<D> {
+    public lazy var wrappedValue: D = resolver()
+
+    private let resolver: () -> D
+
+    public init(_ keyPath: KeyPath<Dependencies, D>) {
+        resolver = {
+            Dependencies.common[keyPath: keyPath]
+        }
     }
 }

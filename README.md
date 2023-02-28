@@ -31,13 +31,19 @@ extension Dependencies {
 }
 ```
 
-Then simply inject these dependencies using `@Dependency` wrapper:
+Then inject the value using these property wrappers:
+- `@Dependency` wrapper injects value at initialization;
+- `@LazyDependency` wrapper injects value at first access.
 ```swift
-import Minima
-
 class SomeClass {
+    // Will be injected at initialization
     @Dependency(\.someService) private var someService
-    @Dependency(\.someOtherService) private var someOtherService
-    @Dependency(\.integerDependency) private var integerDependency
+    // Will be injected only after `foo` is called.
+    @LazyDependency(\.someOtherService) private var someOtherService
+    
+    func foo() {
+        someOtherService.doStuff()
+    }
 }
+
 ```
