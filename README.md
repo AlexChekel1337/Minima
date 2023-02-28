@@ -19,7 +19,7 @@ extension Dependencies {
     
     var someService: SomeService {
         // Returns the same instance each time injection happens
-        someServiceImplementation
+        Self.someServiceImplementation
     }
     
     var someOtherService: SomeOtherService {
