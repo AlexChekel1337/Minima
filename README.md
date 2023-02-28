@@ -8,7 +8,7 @@ After working on bigger projects at work I sort of become addicted to Dependency
 
 ## Usage
 
-Declare your dependencies using an extension in you target:
+Declare your dependencies using an extension in your target:
 ```swift
 import Minima
 
